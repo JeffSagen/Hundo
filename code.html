@@ -54,19 +54,100 @@
 <div class="row row-cols-1 row-cols-lg-2">
     <div class="col-lg-8">
         <pre class="line-numbers"><code class="language-javascript">
-            //call Hello World
-            function helloWorld(){
-                alert("Hello World!");
-            }
+            //enter values
+//get the values form the Page
+//starts or controller function
+
+function getValues(){
+    //get values from the page
+let startValue = document.getElementById("startValue").value;
+let endValue = document.getElementById("endValue").value;
+
+
+//Weneed to validate our input
+//parse into Integers
+startValue = parseInt(startValue);
+endValue = parseInt(endValue);
+
+//boolean check
+if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+        //we call generateNumbers
+let numbers = generateNumbers(startValue, endValue);
+ // we call displayNumbers
+ displayNumbers(numbers);
+}else{
+    alert("You Must enter integers")
+}
+
+
+
+    function newFunction() {
+        return document.getElementById("endValue").value;
+    }
+   
+
+
+    
+}
+
+
+
+//generate numbers from startValue to the EndValue
+//logic function
+function generateNumbers(startValue, endValue){
+let numbers = [];
+//we want to get all numbers from start to end
+for (let index = startValue; index <= endValue; index++){
+// this will execute in a loop until index = endValue
+numbers.push(index);
+    }
+  return numbers;  
+}
+
+    
+//display of view functions
+
+function displayNumbers(numbers){
+
+    let templateRows = "";
+
+    for (let index = 0; index < numbers.length; index++) {
+        
+        let className = "even";
+        
+        let number = numbers[index];
+
+        //equality check
+        if(number % 2 == 0){
+            className = "even";
+        }else{
+            className = "odd"
+        }
+        //This does not render correctly with Prism
+        templateRows += `<tr><td class="${className}">${number}</td></tr>`
+        
+    }
+    document.getElementById("results").innerHTML = templateRows
+
+}
+
+//click on button
+
+
         </code>
         </pre>
 
     </div>
     <div class="col-lg-4">
         <p>The Code is structed in one function.</p>
-        <h5>Hellow World</h5>
-        <p>Hellow World is a function that displays an alert with a message of "Hellow World".</p>
+        <h5>HUNDO:</h5>
+        <p>This is an app that takes you thorugh the basics of loops.
+            This app takes integers in values and puts them in a loop.  
+            The integers are checked to ensure they are integers and then put in a array.
+            After "number" is an integer it is checked to see if it is even or odd.  
+            The number is pushed to an array 'index'
 
+            
     </div>
 </div>
     </div>
